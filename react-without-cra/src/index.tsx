@@ -1,6 +1,5 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
+import App from "./App"
 
-const element = <h1>Olá, mundo!</h1>
-
-ReactDOM.render(element, document.querySelector("#root"))
+ReactDOM.render(<App />, document.getElementById("app"))
