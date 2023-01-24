@@ -1,37 +1,41 @@
-type Theme = ({
-  type: "light";
+type ThemeSpecs = {
   main: {
-    primary: "#ffffff";
-    contrast: "#111414";
+    primary: string;
+    contrast: string;
   };
   color: {
-    primary: "#ea6f1c";
-    contrast: "#ffffff"
+    primary: string;
+    contrast: string;
   }
-} | {
-  type: "dark";
-  main: {
-    primary: "#111414";
-    contrast: "#ffffff";
-  },
-  color: {
-    primary: "#111414";
-    contrast: "#ea6f1c";
-  }
-}) & {
+}
+
+type Theme = {
+  light: ThemeSpecs
+  dark: ThemeSpecs
   setTheme: () => void
 }
 
-const lightTheme: Theme = {
-  type: "light",
-  main: {
-    primary: "#ffffff",
-    contrast: "#111414",
+const theme: Theme = {
+  light: {
+    main: {
+      primary: "#ffffff",
+      contrast: "#111414",
+    },
+    color: {
+      primary: "#ea6f1c",
+      contrast: "#ffffff"
+    },
   },
-  color: {
-    primary: "#ea6f1c",
-    contrast: "#ffffff"
-  },
+  dark: {
+    main: {
+      primary: "#111414",
+      contrast: "#ffffff",
+    },
+    color: {
+      primary: "#111414",
+      contrast: "#ea6f1c",
+    },
+  }
   setTheme: () => console.log("Worked!")
 }
 
