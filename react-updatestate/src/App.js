@@ -3,26 +3,29 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [numbers, setNumbers] = useState([]);
+  const [counters, setCounters] = useState([0, 0, 0, 0]);
+
+  const addOne = (index) => {
+    setCounters(state => {
+      const c = [...state];
+      c[index] = c[index] + 1;
+      return c;
+    });
+  }
 
   return (
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Welcome to React</h2>
-      </div>
-      <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-      </p>
-
+    <div>
       <div>
-        <button onClick={() => setNumbers([...numbers, numbers.length])}>+</button>
+        <button onClick={() => addOne(0)}>[0]</button>
+        <button onClick={() => addOne(1)}>[1]</button>
+        <button onClick={() => addOne(2)}>[2]</button>
+        <button onClick={() => addOne(3)}>[3]</button>
       </div>
 
       <ul>
-        {numbers.map(n => (
-          <li key={n}>{n}</li>
-        ))}
+        {counters.map((c, i) => (
+          <li key={i}>{c}</li>
+          ))}
       </ul>
     </div>
   );
