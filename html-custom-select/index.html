@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Open Sans";
+    }
+
+    .background {
+      width: 100%;
+      min-height: 100vh;
+      background-color: #111414;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      min-width: 400px;
+      position: relative;
+    }
+
+    .select-ul {
+      list-style: none;
+      position: absolute;
+      width: 100%;
+    }
+
+    .select-li, .select-title {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background-color: white;
+      color: #111414;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .select-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .select-li:hover {
+      background-color: rgb(31, 104, 240);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+    <form>
+      <span class="select-title">
+        Selecione
+        <span>|</span>
+      </span>
+      <ul class="select-ul">
+        <!-- <li class="select-li">Opção 1</li>
+        <li class="select-li">Opção 2</li>
+        <li class="select-li">Opção 3</li>
+        <li class="select-li">Opção 4</li> -->
+      </ul>
+    </form>
+    <h1>Content</h1>
+    <h1>Content</h1>
+    <h1>Content</h1>
+    <h1>Content</h1>
+    <h1>Content</h1>
+  </div>
+  <script>
+    const options = ["Option 1", "Option 2", "Option 3", "Option 4"]
+    const selectTitle = document.getElementsByClassName("select-title")[0]
+    const select = document.getElementsByClassName("select-ul")[0]
+    console.log(select)
+    selectTitle.addEventListener("click", () => {
+      console.log("Clicked!")
+      if (!select.innerHTML) {
+        options.forEach(option => {
+          const li = document.createElement("li")
+          li.classList.add("select-li")
+          li.innerText = option
+          select.appendChild(li)
+        })
+      } else {
+        select.innerHTML = null
+      }
+    })
+
+  </script>
+</body>
+</html>
