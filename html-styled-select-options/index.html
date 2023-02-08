@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Object Options</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-container">
+    
+    <form id="myForm">
+      <h2>Pesquise por nomes!</h2>
+      <input id="inputWord" placeholder="Palavra" type="text" name="word" onchange="handleInputChange(this)"/>
+      <span id="word"></span>
+    </form>
+  </div>
+
+
+  <script>
+    const inputWord = document.querySelector("#inputWord")
+    const wordSpan = document.querySelector("#word")
+
+    const names = ["James", "Mary", "Robert", "Patricia", "John", "Jennifer", "Michael", "Linda", "David", "Elizabeth", "William", "Barbara", "Richard", "Susan", "Joseph", "Jessica", "Thomas", "Sarah", "Charles", "Karen", "Christopher", "Lisa", "Daniel", "Nancy", "Matthew", "Betty", "Anthony", "Margaret", "Mark", "Sandra", "Donald", "Ashley", "Steven", "Kimberly", "Paul", "Emily", "Andrew", "Donna", "Joshua", "Michelle", "Kenneth", "Carol", "Kevin", "Amanda", "Brian", "Dorothy", "George", "Melissa", "Timothy", "Deborah", "Ronald", "Stephanie", "Edward", "Rebecca", "Jason", "Sharon", "Jeffrey", "Laura", "Ryan", "Cynthia", "Jacob", "Kathleen", "Gary", "Amy", "Nicholas", "Angela", "Eric", "Shirley", "Jonathan", "Anna", "Stephen", "Brenda", "Larry", "Pamela", "Justin", "Emma", "Scott", "Nicole", "Brandon", "Helen", "Benjamin", "Samantha", "Samuel", "Katherine", "Gregory", "Christine", "Alexander", "Debra", "Frank", "Rachel", "Patrick", "Carolyn", "Raymond", "Janet", "Jack", "Catherine", "Dennis", "Maria", "Jerry", "Heather", "Tyler", "Diane", "Aaron", "Ruth", "Jose", "Julie", "Adam", "Olivia", "Nathan", "Joyce", "Henry", "Virginia", "Douglas", "Victoria", "Zachary", "Kelly", "Peter", "Lauren", "Kyle", "Christina", "Ethan", "Joan", "Walter", "Evelyn", "Noah", "Judith", "Jeremy", "Megan", "Christian", "Andrea", "Keith", "Cheryl", "Roger"]
+
+    const ul = document.createElement("ul");
+    document.querySelector("#myForm").appendChild(ul);
+
+    inputWord.addEventListener("input", () => {
+      wordSpan.innerText = inputWord.value
+      ul.innerHTML = ""
+
+      if (inputWord.value === "") return
+
+      const filteredNames = names.filter(name => name.includes(inputWord.value))
+
+      if (filteredNames.length === 0) {
+        ui.innerHTML = "No names found!"
+        return
+      } else {
+        filteredNames.forEach(name => {
+          const li = document.createElement("li")
+          li.innerText = name
+          ul.appendChild(li)
+        })
+      }
+
+    })
+  </script>
+</body>
+</html>
