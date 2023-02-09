@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loader Spinner!</title>
+  <style>
+    .background-container {
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .loading {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .spin {
+      position: relative;
+      content: "";
+      width: 50px;
+      height: 50px;
+      border: 10px solid rgba(0, 0, 0, 0);
+      border-radius: 50%;
+    }
+
+    .first {
+      position: absolute;
+      border-top: 10px solid #ea6f1c;
+      border-right: 10px solid #ea6f1c;
+      animation: loading 5s ease infinite;
+    }
+    .second {
+      position: absolute;
+      border-right: 10px solid black;
+      border-bottom: 10px solid black;
+      animation: loading 5s linear infinite;
+      animation-delay: -3s;
+    }
+
+    @keyframes loading {
+      20% {
+        transform: rotate(1.2turn);
+      }
+      40% {
+        transform: rotate(2.4turn);
+      }
+      60% {
+        transform: rotate(3.6turn);
+      }
+      80% {
+        transform: rotate(4.8turn);
+      }
+      100% {
+        transform: rotate(6.0turn);
+      }
+    }
+
+    .square2 {
+      position: absolute;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      background: white;
+    }
+    .square1 {
+      position: absolute;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      background: black;
+    }
+    .squares {
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div class="background-container">
+
+    <div class="loading">
+      <div class="spin first"></div>
+      <div class="spin second"></div>
+    </div>
+
+    <!-- Testing overlap when applied border-radius on identical elements -->
+    <!-- <div class="squares">
+      <div class="square1"></div>
+      <div class="square2"></div>
+    </div> -->
+
+  </div>
+</body>
+</html>
