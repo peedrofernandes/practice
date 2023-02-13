@@ -9,13 +9,19 @@
     .background-container {
       display: flex;
       position: relative;
-      justify-content: center;
+      justify-content: space-evenly;
       align-items: center;
       width: 100%;
       min-height: 100vh;
     }
 
-    .loading {
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .loading-1 {
       position: relative;
       display: flex;
       justify-content: center;
@@ -37,7 +43,6 @@
       animation: loading 5s ease infinite;
     }
     .second {
-      position: absolute;
       border-right: 10px solid black;
       border-bottom: 10px solid black;
       animation: loading 5s linear infinite;
@@ -79,14 +84,83 @@
     .squares {
       position: relative;
     }
+
+    .loading-2 {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    svg.spinner {
+      position: relative;
+      width: 150px;
+      height: 150px;
+      /* animation: rotate 2s linear infinite; */
+    }
+    svg.spinner circle {
+      fill: none;
+      stroke-width: 10;
+      stroke: #00a1ff;
+      stroke-linecap: round;
+      stroke-dasharray: 320;
+      stroke-dashoffset: 0;
+      transform-origin: 50% 50%;
+      animation: animate 4s ease infinite, rotate 2s linear infinite;
+      /* animation: rotate 2s linear infinite; */
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(-1turn);
+      }
+    }
+
+    @keyframes animate {
+      0% {
+        stroke-dashoffset: 0;
+      }
+      100% {
+        stroke-dashoffset: 640;
+      }
+    }
+
+    line {
+      stroke: #f8a100;
+      stroke-width: 10;
+      stroke-dasharray: 350;
+    }
   </style>
 </head>
 <body>
   <div class="background-container">
 
-    <div class="loading">
-      <div class="spin first"></div>
-      <div class="spin second"></div>
+    <div class="loading-1">
+        <div class="spin first"></div>
+        <div class="spin second"></div>
+    </div>
+
+    <div class="loading-2">
+      <svg class="spinner" viewBox="0 0 140 140">
+        <circle id="circle" cx="70" cy="70" r="60"></circle>
+      </svg>
+
+      <fieldset>
+        <label>stroke-dasharray</label>
+        <input type="range" name="stroke-dasharray"  min="0" max="1000" step="10">
+        <input type="number" name="stroke-dasharray">
+      </fieldset>
+      <fieldset>
+        <label>gap</label>
+        <input type="range" name="gap"  min="0" max="1000" step="10">
+        <input type="number" name="gap">
+      </fieldset>
+
+      <fieldset>
+        <label>stroke-dashoffset</label>
+        <input type="range" name="stroke-dashoffset" min="-1000" max="1000" step="10">
+        <input type="number" name="stroke-dashoffset">
+      </fieldset>
+
     </div>
 
     <!-- Testing overlap when applied border-radius on identical elements -->
@@ -96,5 +170,45 @@
     </div> -->
 
   </div>
+
+  <script>
+    const circle = document.getElementById("circle")
+
+    const sda1 = document.querySelectorAll("input[name=stroke-dasharray]")[0]
+    const sda2 = document.querySelectorAll("input[name=stroke-dasharray]")[1]
+    sda1.addEventListener("input", (e) => {
+      sda2.value = e.target.value
+      const values = circle.style.strokeDasharray.split(" ")
+      console.log(values)
+      circle.style.strokeDasharray = values[1] ? `${e.target.value} ${values[1]}` : e.target.value
+    })
+    sda2.addEventListener("change", (e) => {
+      const gap = circle.style.strokeDashArray.split(" ")[1]
+      circle.style.strokeDasharray = `${e.target.value} ${gap}`
+    })
+
+    const gap1 = document.querySelectorAll("input[name=gap]")[0]
+    const gap2 = document.querySelectorAll("input[name=gap]")[1]
+    gap1.addEventListener("input", (e) => {
+      gap2.value = e.target.value
+      const values = circle.style.strokeDasharray.split(" ")
+      console.log(values)
+      circle.style.strokeDasharray = values[0] ? `${values[0]} ${e.target.value}` : e.target.value
+    })
+    gap2.addEventListener("change", (e) => {
+      const stroke = circle.style.strokeDasharray.split(" ")[0]
+      circle.style.strokeDasharray = values[0] ? `${values[0]} ${e.target.value}` : e.target.value
+    })
+
+    const sdo1 = document.querySelectorAll("input[name=stroke-dashoffset]")[0]
+    const sdo2 = document.querySelectorAll("input[name=stroke-dashoffset]")[1]
+    sdo1.addEventListener("input", (e) => {
+      sdo2.value = e.target.value
+      circle.style.strokeDashoffset = e.target.value
+    })
+    sdo2.addEventListener("change", (e) => {
+      circle.style.strokeDashoffset = e.target.value
+    })
+  </script>
 </body>
 </html>
