@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111414;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.parent {
+  position: relative;
+  border: 4px solid crimson;
+}
+
+.container {
+  width: 400px;
+  height: 200px;
+  border: 1px solid white;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 0;
+}
+
+.child {
+  background: red;
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  color: #111414;
+  z-index: 2000;
+}
+
+.grand-parent {
+  position: relative;
+}
+
+.parent2 {
+  width: 200px;
+  height: 200px;
+  overflow-y: auto;
+  overflow-clip-margin: 100px;
+
+}
+
+.child2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  top: 50px;
+  left: 50px;
+}
