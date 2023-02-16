@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+
+    <ul class="content">
+      <li>Item</li>
+      <li>Item</li>
+      <li>Item</li>
+      <li class="toggleDropdown">Item</li>
+      <div class="dropdown">
+        <ul class="content">
+          <li>Item</li>
+          <li class="toggleDropdown">Item</li>
+          <div class="dropdown">
+            <ul class="content">
+              <li>Item</li>
+              <li>Item</li>
+              <li>Item</li>
+              <li>Item</li>
+            </ul>
+          </div>
+          <li>Item</li>
+          <li>Item</li>
+          <li>Item</li>
+          <li>Item</li>
+          <li>Item</li>
+        </ul>
+      </div>
+      <li>Item</li>
+      <li>Item</li>
+    </ul>
+
+  </div>
+  <script>
+
+  const contents = document.querySelectorAll('.content');
+
+  const initialContentTop = contents[0].getBoundingClientRect().top
+  console.log(`Initial Content Top: ${initialContentTop}`)
+  contents.forEach((content) => {
+    const toggler = content.querySelector('.toggleDropdown');
+    const dropdown = content.querySelector('.dropdown');
+
+  //   const coordinateObserver = new MutationObserver((mutationsList) => {
+  //   mutationsList.forEach((m) => {
+  //     if (m.type === "attributes" && m.attributeName === "style") {
+        
+  //     }
+  //   })
+  // })
+    
+    toggler.addEventListener("click", () => {
+      dropdown.style.display = dropdown.style.display !== "none" ? "none" : "block";
+    });
+
+    content.addEventListener("scroll", () => {
+      const togglerBottom = toggler.getBoundingClientRect().bottom
+      dropdown.style.top = togglerBottom + "px"
+    });
+
+    dropdown.addEventListener("move", () => alert("Dropdown moved!!!"))
+  });
+  </script>
+</body>
+</html>
