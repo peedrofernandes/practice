@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @font-face {
+      font-family: "MontserratAlternates";
+      src: url("./assets/MontserratAlternates-Regular.ttf")
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .viewport {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      min-height: 100vh;
+      background-color: #111414;
+      color: #ddd;
+      font-family: "MontserratAlternates"
+    }
+
+    .container {
+      padding: 16px;
+      border: 1px solid #ddd;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      max-width: 80vw;
+    }
+
+    .inputField {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    input {
+      outline: none;
+      border: none;
+      background: none;
+      color: inherit;
+      box-shadow: 0px 0px 1px #ddd, inset 0px 0px 1px #ddd;
+      padding: 8px 4px;
+      font-family: inherit;
+    }
+
+    input:focus {
+      box-shadow: 0px 0px 3px #ddd, inset 0px 0px 3px #ddd;
+    }
+  
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+
+    <div class="container">
+      <h1>Debounce e Throttle</h1>
+      <div class="inputField">
+        <label for="input">Teste o debounce e throttle:</label>
+        <input id="input" type="text" placeholder="Digite algo aqui">
+      </div>
+      <div class="item">
+        <span>
+          Fluxo normal: <span id="default"></span>
+        </span>
+        <span>
+          Debounce: <span id="debounce"></span>
+        </span>
+        <span>
+          Throttle: <span id="throttle"></span>
+        </span>
+      </div>
+    </div>
+
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>
