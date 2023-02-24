@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: "Open sans", sans-serif;
+  font-size: 18px; }
+
+ul, ol, li {
+  list-style: none; }
