@@ -16,6 +16,7 @@
     }
 
     .background {
+      position: relative;
       width: 100%;
       min-height: 100vh;
       background-color: #111414;
@@ -27,6 +28,7 @@
     }
 
     form {
+      display: block;
       min-width: 400px;
       position: relative;
     }
@@ -35,6 +37,8 @@
       list-style: none;
       position: absolute;
       width: 100%;
+      max-height: 300px;
+      overflow-y: auto;
     }
 
     .select-li, .select-title {
@@ -80,7 +84,7 @@
     <h1>Content</h1>
   </div>
   <script>
-    const options = ["Option 1", "Option 2", "Option 3", "Option 4"]
+    const options = ["Option 1", "Option 2", "Option 3", "Option 4", "Option 4", "Option 4", "Option 4", "Option 4"]
     const selectTitle = document.getElementsByClassName("select-title")[0]
     const select = document.getElementsByClassName("select-ul")[0]
     console.log(select)

@@ -27,20 +27,22 @@ type MyType = {
     prop3: string;
   }
   email: string;
-  array: [number, number, string],
-  composeArray: [number, string, {
+  tuple: [number, number, string],
+  composeTuple: [number, string, {
     integer: number,
     float: number
-  }]
+  }],
+  array: number[]
 }
 
 
 const values: DeepPartial<MyType> = {
   id: "string",
-  array: [1, , "o"],
-  composeArray: [, , {
+  tuple: [1, , "o"],
+  composeTuple: [, , {
     integer: 1
-  }]
+  }],
+  array: [1, 2, 3, 1,3]
 }
 
 type MyArray = [number, number, string]
