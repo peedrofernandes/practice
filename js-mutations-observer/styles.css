@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111414;
+  color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  padding: 8px;
+  max-height: 150px;
+  width: 400px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  list-style: none;
+}
+.content li {
+  padding: 8px;
+}
+.content li:hover {
+  background-color: #1c2020;
+}
+.toggleDropdown {
+  cursor: pointer;
+  color: rgb(2, 180, 2);
+}
+
+.dropdown {
+  /* display: none; */
+  position: fixed;
+  background-color: #111414;
+}
+
