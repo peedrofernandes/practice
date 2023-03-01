@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documento</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .viewport {
+      width: 100%;
+      min-height: 100vh;
+      background-color: #111414; 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .svg {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      border: 1px solid #ddd;
+    }
+
+    .svg svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .buttons {
+      width: 90%;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+    }
+    
+    button {
+      padding: 8px;
+      background-color: #ddd;
+      border: none;
+      cursor: pointer;
+    }
+
+    #clipped {
+      clip-path: url(#clippath);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+
+    <div class="svg">
+      <svg id="visual" viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+        <!-- Valores iniciais -->
+        <g id="initial" transform="translate(489.96240931372967 282.24328077472455)">
+          <path d="M134.1 -153.6C177.7 -123.2 219.8 -84.7 233.5 -36.8C247.1 11 232.2 68.3 204.6 120C177 171.7 136.5 217.9 87.1 233.1C37.7 248.4 -20.6 232.7 -81 214.3C-141.3 195.9 -203.6 174.7 -252 127.7C-300.3 80.6 -334.8 7.8 -310.6 -41.8C-286.4 -91.3 -203.5 -117.5 -141.9 -144.8C-80.4 -172.1 -40.2 -200.5 2.5 -203.5C45.2 -206.5 90.4 -184.1 134.1 -153.6" fill="#ddd">
+          </path>
+        </g>
+        <!-- Valores com translação aplicada -->
+        <path id="translated" d="M624.062409 128.643281C667.662409 159.043281 709.762409 197.543281 723.462409 245.443281C737.062409 293.243281 722.162409 350.543281 694.562409 402.243281C666.962409 453.943281 626.462409 500.143281 577.062409 515.343281C527.662409 530.643281 469.362409 514.943281 408.962409 496.543281C348.662409 478.143281 286.362409 456.943281 237.962409 409.943281C189.662409 362.843281 155.162409 290.043281 179.362409 240.443281C203.562409 190.943281 286.462409 164.743281 348.062409 137.443281C409.562409 110.143281 449.762409 81.743281 492.462409 78.743281C535.162409 75.743281 580.362409 98.143281 624.062409 128.643281
+        " fill="#BB004B"></path>
+        
+        <defs>
+          <clipPath id="clippath" clipPathUnits="objectBoundingBox">
+            <path fill="#ddd" id="relative" d="M0.846689 0.174535C0.905842 0.215780 0.962961 0.268014 0.981548 0.333002C1.000000 0.397854 0.979785 0.475595 0.942339 0.545738C0.904893 0.615882 0.849945 0.678563 0.782922 0.699185C0.715899 0.719943 0.636801 0.698643 0.554855 0.673679C0.473043 0.648715 0.388519 0.619952 0.322852 0.556185C0.257322 0.492283 0.210515 0.393513 0.243348 0.326218C0.276181 0.259060 0.388654 0.223513 0.472229 0.186474C0.555669 0.149435 0.610209 0.110904 0.668142 0.106834C0.726075 0.102764 0.787399 0.133155 0.846689 0.174535"></path>
+          </clipPath>
+        </defs>
+        <img id="clipped" src="download.jpeg" />
+      </svg>
+    </div>
+
+    <div class="buttons">
+      <button onclick="toggleInitial()">Toggle Initial</button>
+      <button onclick="toggleTranslated()">Toggle Translated</button>
+    </div>
+
+  </div>
+
+  <script>
+    const initial = document.querySelector("#initial")
+    const translated = document.querySelector("#translated")
+
+    function toggleInitial() {
+      initial.style.display = initial.style.display !== "none" ? "none" : "block"
+    }
+    function toggleTranslated() {
+      translated.style.display = translated.style.display !== "none" ? "none" : "block"
+    }
+  </script>
+</body>
+</html>
