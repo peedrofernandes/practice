@@ -1,0 +1,16 @@
+.Container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ddd;
+}
+
+[class^="box"] {
+  padding: 16px;
+}
+
+.box1 {
+  background-color: #111414;
+  color: white;
+}
