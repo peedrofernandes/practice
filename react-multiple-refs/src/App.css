@@ -5,6 +5,16 @@
   text-align: center;
 }
 
+.viewport {
+  width: 100%;
+  min-height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 18px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
