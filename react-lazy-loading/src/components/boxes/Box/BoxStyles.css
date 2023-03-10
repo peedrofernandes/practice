@@ -1,0 +1,14 @@
+[class^="box-"] {
+  width: 200px;
+  height: 200px;
+}
+
+.box-blue {
+  background-color: aqua;
+}
+.box-yellow {
+  background-color: yellow;
+}
+.box-red {
+  background-color: crimson;
+}
