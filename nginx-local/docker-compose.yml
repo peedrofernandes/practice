@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  nginx-public:
+    build: .
+    ports:
+      - 8888:80
+  nginx-private:
+    build: .
+    ports:
+      - 127.0.0.1:8889:80
