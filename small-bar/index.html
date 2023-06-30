@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barra de carregamento - Msg de erro</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .viewport {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #111414;
+    }
+
+    .container {
+      position: relative;
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .box {
+      margin: 16px auto;
+      transform: translateY(0);
+      opacity: 0;
+      position: absolute;
+      width: 300px;
+      height: 20px;
+      background-color: crimson;
+      color: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.4rem;
+      transition: 0.25s ease-in-out;
+      bottom: 0;
+      right: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .load {
+      position: absolute;
+      display: block;
+      content: "";
+      background-color: #fafafa90;
+      height: 2px;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    }
+
+    #error-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="viewport">
+    <div class="container">
+      
+      <button id="show" onclick="show()">Show</button>
+    </div>
+
+    <ul id="error-container">
+    </ul>
+  </div>
+  <script>
+    const boxes = []
+    let qtdBoxesAppended = 0
+
+    function getTransformValue(element) {
+      const computedStyle = window.getComputedStyle(element)
+      const transformValue = computedStyle.getPropertyValue("transform")
+      return transformValue
+    }
+
+    function createErrorMessage(errorMessage) {
+      const box = document.createElement("div")
+      box.classList.add("box")
+      const load = document.createElement("div")
+      load.classList.add("load")
+      const span = document.createElement("span")
+      span.textContent = errorMessage
+      box.appendChild(load)
+      box.appendChild(span)
+      return [box, load]
+    }
+    
+    function toggle(box, load) {
+        setTimeout(() => {
+          box.style.opacity = 1
+
+          boxes.forEach((b, i) => {
+            b.currentTransform -= 40
+            b.box.style.transform = `translateY(${b.currentTransform}px)`
+          })
+
+          boxes.push({ box, currentTransform: 0, id: qtdBoxesAppended })
+          qtdBoxesAppended++
+          let value = 100
+          const intervalCode = setInterval(() => {
+            load.style.width = `${value -= 0.5}%`
+            if (value <= 0) {
+              clearInterval(intervalCode)
+              box.style.opacity = 0
+              setTimeout(() => {
+                box.remove()
+                boxes.shift()
+                resolve()
+              }, 1000);
+            }
+          }, 10)
+        }, 0)
+    }
+
+    async function show() {
+      const errorContainer = document.querySelector("#error-container")
+      const [box, load] = createErrorMessage("AAA")
+      errorContainer.appendChild(box)
+      toggle(box, load)
+    }
+  </script>
+</body>
+</html>
