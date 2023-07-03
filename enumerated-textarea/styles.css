@@ -1,0 +1,73 @@
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #111414;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.textarea-container {
+  position: relative;
+  width: 60%;
+  height: 320px;
+  padding: 16px 16px 16px 62px;
+  border: 0.2px solid #fafafa90;
+  background-color: #0c0e0e;
+  color: #fafafa;
+  overflow-y: auto;
+}
+
+.textarea-numbers {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  flex: 1;
+  z-index: 1;
+}
+
+.textarea-numbers > span {
+  flex-shrink: 0;
+  width: 100%;
+  padding: 0 16px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  pointer-events: none;
+  border-radius: 16px;
+}
+
+textarea {
+  overflow-y: hidden;
+  width: 100%;
+  min-height: 100%;
+  color: inherit;
+  resize: none;
+  border: none;
+  background-color: inherit;
+  flex: 40;
+  line-height: 32px;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+textarea::selection {
+  background-color: #222727;
+}
+
